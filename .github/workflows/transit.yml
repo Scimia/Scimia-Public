@@ -20,12 +20,11 @@ jobs:
           set -x
           payload="$(
             echo '{
-              "event_type": "public-pr-opened",
+              "event_type": "transit",
               "client_payload": {
                 "event": "${{ toJSON(github.event) }}"
               }
             }' | tr -d $'\n' | tr -s ' '
           )"
 
-          echo "$payload" | gh api --input - \
-            /repos/Scimia/Scimia-Private/dispatches
+          echo "$payload" | gh api repos/Scimia/Scimia-Private/dispatches --input -

@@ -11,7 +11,7 @@ name: Remote Dispatch Action Initiator
 env:
   DEBUG: 1
   # GH_TOKEN: ${{ github.token }}
-  GH_TOKEN: ${{ secrets.SCIMIA_PRIVATE_GITHUB_TOKEN }}
+  GH_TOKEN: ${{ secrets.SCIMIA_BOT_GITHUB_TOKEN }}
 
 jobs:
   tx:
@@ -19,12 +19,6 @@ jobs:
     steps:
       - run: |
           set -x
-          payload="$(
-            echo '{
-              "event_type": "transit",
-              "client_payload": {}
-            }' | tr -d $'\n' | tr -s ' '
-          )"
 
           echo '{"event_type":"test","client_payload":{"ref":""}}' \
             | gh api repos/Scimia/Scimia-Private/dispatches --input -

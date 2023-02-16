@@ -17,12 +17,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo '{
-            "event_type": "public-pr-opened",
-            "client_payload": {
-              "ref": "${{ github.ref }}"
-            }
-          }' tr -d $'\n' | tr -s ' ' \
-          gh api \
-            --input - \
+          set -x
+          payload="$(
+            echo '{
+              "event_type": "public-pr-opened",
+              "client_payload": {
+                "event": "${{ github.event }}"
+              }
+            }' | tr -d $'\n' | tr -s ' '
+          )"
+
+          echo "$payload" | gh api --input - \
             /repos/Scimia/Scimia-Private/dispatches

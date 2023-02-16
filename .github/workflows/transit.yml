@@ -22,7 +22,7 @@ jobs:
             echo '{
               "event_type": "public-pr-opened",
               "client_payload": {
-                "event": "${{ fromJSON(github.event) }}"
+                "event": "${{ toJSON(github.event) }}"
               }
             }' | tr -d $'\n' | tr -s ' '
           )"

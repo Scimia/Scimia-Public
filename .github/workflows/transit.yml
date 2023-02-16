@@ -22,7 +22,7 @@ jobs:
             "client_payload": {
               "ref": "${{ github.ref }}"
             }
-          }' | \
+          }' tr -d $'\n' | tr -s ' ' \
           gh api \
             --input - \
             /repos/Scimia/Scimia-Private/dispatches

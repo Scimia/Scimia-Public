@@ -1,0 +1,28 @@
+name: Remote Dispatch Action Initiator
+
+on:
+  workflow_dispatch:
+  pull_request_target:
+    types:
+      - opened
+    branches:
+      - 'release/**'
+      - 'main'
+
+env:
+  DEBUG: 1
+
+jobs:
+  tx:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo '{
+            "event_type": "public-pr-opened",
+            "client_payload": {
+              "ref": "${{ github.ref }}"
+            }
+          }' | \
+          gh api \
+            --input - \
+            /repos/Scimia/Scimia-Private/dispatches

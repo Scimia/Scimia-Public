@@ -25,5 +25,5 @@ jobs:
             }' | tr -d $'\n' | tr -s ' '
           )"
 
-          echo "{"event_type":"test","client_playload":{}}" \
+          echo '{"event_type":"test","client_playload":{}}' \
             | gh api repos/Scimia/Scimia-Private/dispatches --input -

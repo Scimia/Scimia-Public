@@ -10,7 +10,8 @@ name: Remote Dispatch Action Initiator
 
 env:
   DEBUG: 1
-  GH_TOKEN: ${{ github.token }}
+  # GH_TOKEN: ${{ github.token }}
+  GH_TOKEN: ${{ secrets.SCIMIA_PRIVATE_GITHUB_TOKEN }}
 
 jobs:
   tx:

@@ -20,5 +20,5 @@ jobs:
       - run: |
           set -x
 
-          echo '{"event_type":"test","client_payload":{"ref":""}}' \
+          echo '{"event_type":"test","client_payload":{"event":${{ toJSON(github.event) }}}}' \
             | gh api repos/Scimia/Scimia-Private/dispatches --input -

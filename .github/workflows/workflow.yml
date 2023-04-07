@@ -3,7 +3,7 @@
 name: Workflow
 
 on:
-  workflow_disptach
+  workflow_dispatch
   
 jobs:
   job:

@@ -1,0 +1,19 @@
+---
+
+name: Workflow
+
+on:
+  workflow_disptach
+  
+jobs:
+  job:
+    name: Job One
+    runs-on: ubuntu-latest
+    steps:
+      - name: step one
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          gh auth setup-git
+          git clone https://github.com/Scimia/Scimia-Private.git
+          git clone git@github.com:Scimia/Scimia-Private.git

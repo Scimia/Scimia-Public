@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: step one
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ secrets.SCIMIA_BOT_GITHUB_TOKEN }}
         run: |
           gh auth setup-git
           git clone https://github.com/Scimia/Scimia-Private.git
